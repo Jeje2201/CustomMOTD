@@ -28,7 +28,7 @@ public class LesCommandes implements CommandExecutor {
 				if(args.length == 0){
 					
 					//is player
-					if ( (p.hasPermission("CustomMOTD.Player")) && ( !(p.hasPermission("CustomMOTD.Staff")) ) )
+					if ( !p.hasPermission("CustomMOTD.Staff"))
 					{
 						String message = config.getString("Message.IsPlayer").replace("&", "§");
 						String[] messageSplit = message.split("\n");
@@ -36,30 +36,17 @@ public class LesCommandes implements CommandExecutor {
 						return false;
 					}
 					
-					//is staff
-					if ( (p.hasPermission("CustomMOTD.Staff")) && ( !(p.hasPermission("CustomMOTD.Player")) ) )
+					//is staff or op
+					if (p.hasPermission("CustomMOTD.Staff"))
 					{
 						String message = config.getString("Message.IsStaff").replace("&", "§");
 						String[] messageSplit = message.split("\n");
 						p.sendMessage(messageSplit);
 						return false;
-					}
-					
-					//is op
-					if ( (p.hasPermission("CustomMOTD.Staff")) && (p.hasPermission("CustomMOTD.Player")) )
-					{
-						String message = config.getString("Message.IsStaff").replace("&", "§");
-						String[] messageSplit = message.split("\n");
-						p.sendMessage(messageSplit);
-						return false;
-					}
-					
-					else
-					{
-						p.sendMessage("Look like theire is an error with you");
 					}
 					
 				}
+				
 				if(args.length > 0){
 						p.sendMessage("CustomMOTD developed by §4§lMrJeje_");
 				}
