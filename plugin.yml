@@ -1,8 +1,8 @@
-name: PlayerTag
-version: 2.7
+name: CustomMOTD
+version: 1.0
 author: MrJeje_
-main: fr.MrJeje_.Tag.Tag
+main: fr.MrJeje_.CustomMOTD.CustomMOTD
 commands:
- playertag: 
-  description: Show all Tag commands
-  aliases: [ptag]
+ CustomMOTD: 
+  description: Show all CustomMOTD commands
+  aliases: [cmotd]
