@@ -1,19 +1,10 @@
 package fr.MrJeje_.CustomMOTD;
 
-import java.util.ArrayList;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class LesCommandes implements CommandExecutor {
 	
@@ -24,8 +15,6 @@ public class LesCommandes implements CommandExecutor {
 		this.pl = CustomMOTD;
 		this.config = pl.getConfig();
 		}	
-	
-	int compteurjoueur = 0;
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
@@ -38,38 +27,44 @@ public class LesCommandes implements CommandExecutor {
 				
 				if(args.length == 0){
 					
-					if(p.hasPermission("CustomMOTD.help")){
-						
-						p.sendMessage(
-								"§e§l--- §fPlayerTag Info §e§l---"
-								+ "\n§7Below is a list of all Tag commands:§f"
-								+ "\n§e§l----"
-								);
-						
+					//is player
+					if ( (p.hasPermission("CustomMOTD.Player")) && ( !(p.hasPermission("CustomMOTD.Staff")) ) )
+					{
+						String message = config.getString("Message.IsPlayer").replace("&", "§");
+						String[] messageSplit = message.split("\n");
+						p.sendMessage(messageSplit);
+						return false;
 					}
 					
-					else {
-						p.sendMessage((config.getString("Message.PluginName") + config.getString("Message.NoPerm")).replace("&", "§"));
+					//is staff
+					if ( (p.hasPermission("CustomMOTD.Staff")) && ( !(p.hasPermission("CustomMOTD.Player")) ) )
+					{
+						String message = config.getString("Message.IsStaff").replace("&", "§");
+						String[] messageSplit = message.split("\n");
+						p.sendMessage(messageSplit);
+						return false;
 					}
-				}
-						
-				if(args.length == 1){
 					
-					if(args[0].equalsIgnoreCase("custom")){
-						if (p.hasPermission("CustomMOTD.custom")){
-							p.sendMessage("");
-						}
-						else{
-							p.sendMessage((config.getString("Message.PluginName") + config.getString("Message.NoPerm")).replace("&", "§"));
-						}
+					//is op
+					if ( (p.hasPermission("CustomMOTD.Staff")) && (p.hasPermission("CustomMOTD.Player")) )
+					{
+						String message = config.getString("Message.IsStaff").replace("&", "§");
+						String[] messageSplit = message.split("\n");
+						p.sendMessage(messageSplit);
+						return false;
 					}
+					
+					else
+					{
+						p.sendMessage("Look like theire is an error with you");
+					}
+					
 				}
-				
-				if (!args[0].equalsIgnoreCase("custom")){
-					p.sendMessage((config.getString("Message.PluginName")+config.getString("Message.ErrorCommand")).replace("&", "§"));
+				if(args.length > 0){
+						p.sendMessage("CustomMOTD developed by §4§lMrJeje_");
 				}
+			}
 		}
-	}
 		return false;
 	}
 }

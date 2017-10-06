@@ -1,14 +1,9 @@
 package fr.MrJeje_.CustomMOTD;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class Join implements Listener {
@@ -21,69 +16,36 @@ public class Join implements Listener {
 		this.config = pl.getConfig();
 		}	
 	
-		@EventHandler
-		public void onJoin(PlayerJoinEvent e){
-		Player p = e.getPlayer();
-		
+	@EventHandler
+	public void onJoin(PlayerJoinEvent e){
+	Player p = e.getPlayer();
+	
 		if(config.getString("Enable") == "true")
 		{
-			for (Player s : Bukkit.getOnlinePlayers())
+			if (p.hasPermission("CustomMOTD.Player"))
 			{
-				if (s.hasPermission("CustomMOTD.Player"))
-				{
-					s.sendMessage(" LeTest1 " + config.getString("Message.IsPlayer"));
-				}
-				
-				else
-				{
-					s.sendMessage(" LeTest2 " + config.getString("Message.IsStaff"));
-				}
+				String message = config.getString("Message.IsPlayer").replace("&", "§");
+				String[] messageSplit = message.split("\n");
+				p.sendMessage(messageSplit);
 			}
-		}
 			
+			else if (p.hasPermission("CustomMOTD.Staff"))
+			{
+				String message = config.getString("Message.IsStaff").replace("&", "§");
+				String[] messageSplit = message.split("\n");
+				p.sendMessage(messageSplit);
+			}
+			
+			else if ((p.hasPermission("CustomMOTD.Player")) && (p.hasPermission("CustomMOTD.Staff")))//if is op show staff
+			{
+				String message = config.getString("Message.IsStaff").replace("&", "§");
+				String[] messageSplit = message.split("\n");
+				p.sendMessage(messageSplit);
+			}
+			else
+			{
+				p.sendMessage("Look like theire is an error with you");
 			}
 		}
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//This is for mrjeje, just to get a popup when someone mine a diamond, don't need to flood the console and other staff don't want to get spam of this, so to not bother anyone, popup mrjeje only to find xray players 
-		@EventHandler
-	    public void onBlockBreak(BlockBreakEvent e) {
-	        Player c = e.getPlayer();
-	        Block b = e.getBlock();
-	        Player m = Bukkit.getServer().getPlayer("MrJeje_");
-	       
-	        if ((m != null) && (b.getType() == Material.DIAMOND_ORE) ){
-	        	m.sendMessage( "[Â§cAlertÂ§f] \""+c.getDisplayName() + "\" mine du Â§bdiamand");
-	        }
-					
-    	}
-
+	}
 }
-

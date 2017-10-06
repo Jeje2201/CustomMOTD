@@ -8,12 +8,12 @@ public class CustomMOTD extends JavaPlugin implements Listener {
 	
 	public void onEnable(){
 		
-		System.out.println("[CustomMOTD] Enable! (by MrJeje_)"); //affiche dans la console le message que le plugin est activé
+		System.out.println("[CustomMOTD] Enable! (by MrJeje_)");
 		
 		getConfig().options().copyDefaults(true); //chargement de la config par defaut
 		saveConfig();
 		
-		getCommand("CustomMOTD").setExecutor(new LesCommandes(this)); //creer la commande /tag avec une classe TagCommand
+		getCommand("CustomMOTD").setExecutor(new LesCommandes(this)); //creer la commande avec sa classe 
 		getCommand("cmotd").setExecutor(new LesCommandes(this));
 		
 		PluginManager pm = getServer().getPluginManager(); //Indique qu'il existe d'autres classes a action

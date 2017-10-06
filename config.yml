@@ -1,6 +1,6 @@
 Enable: true
  
 Message:
- IsPlayer: "Test1"
- IsStaff: "Test2"
- ErrorCommand: "This is not a CustomMOTD command"
+ IsPlayer: "--\nThis &dis \n&aAn &6Exemple \nof &5a &8custom \n&cMessage &afor &4PLAYER!\n--"
+ IsStaff: "--\nThis &dis \n&aAn &6Exemple \nof &5a &8custom \n&cMessage &afor &4Staff!\n--"
+ ErrorPerm: "&4You don't have any CustomWm permission on you."
