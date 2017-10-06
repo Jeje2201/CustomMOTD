@@ -33,7 +33,6 @@ public class LesCommandes implements CommandExecutor {
 						String message = config.getString("Message.IsPlayer").replace("&", "§");
 						String[] messageSplit = message.split("\n");
 						p.sendMessage(messageSplit);
-						return false;
 					}
 					
 					//is staff or op
@@ -42,7 +41,6 @@ public class LesCommandes implements CommandExecutor {
 						String message = config.getString("Message.IsStaff").replace("&", "§");
 						String[] messageSplit = message.split("\n");
 						p.sendMessage(messageSplit);
-						return false;
 					}
 					
 				}

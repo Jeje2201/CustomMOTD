@@ -22,29 +22,20 @@ public class Join implements Listener {
 	
 		if(config.getString("Enable") == "true")
 		{
-			if (p.hasPermission("CustomMOTD.Player"))
+			//is player
+			if ( !p.hasPermission("CustomMOTD.Staff"))
 			{
 				String message = config.getString("Message.IsPlayer").replace("&", "§");
 				String[] messageSplit = message.split("\n");
 				p.sendMessage(messageSplit);
 			}
 			
-			else if (p.hasPermission("CustomMOTD.Staff"))
+			//is staff or op
+			if (p.hasPermission("CustomMOTD.Staff"))
 			{
 				String message = config.getString("Message.IsStaff").replace("&", "§");
 				String[] messageSplit = message.split("\n");
 				p.sendMessage(messageSplit);
-			}
-			
-			else if ((p.hasPermission("CustomMOTD.Player")) && (p.hasPermission("CustomMOTD.Staff")))//if is op show staff
-			{
-				String message = config.getString("Message.IsStaff").replace("&", "§");
-				String[] messageSplit = message.split("\n");
-				p.sendMessage(messageSplit);
-			}
-			else
-			{
-				p.sendMessage("Look like theire is an error with you");
 			}
 		}
 	}
