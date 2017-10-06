@@ -1,5 +1,5 @@
 Enable: true
  
 Message:
- IsPlayer: "--\nThis &dis \n&aAn &6Exemple \nof &5a &8custom \n&cMessage &afor &4PLAYER!\n--"
- IsStaff: "--\nThis &dis \n&aAn &6Exemple \nof &5a &8custom \n&cMessage &afor &4Staff!\n--"
+ IsPlayer: "--\nThis &dis \n&aAn &6Exemple \nof &5a &8custom \n&cMOTD &afor &4PLAYER!\n--"
+ IsStaff: "--\nThis &dis \n&aAn &6Exemple \nof &5a &8custom \n&cMOTD &afor &4Staff!\n--"

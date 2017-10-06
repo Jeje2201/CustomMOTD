@@ -1,4 +1,4 @@
-package fr.MrJeje_.CustomMOTD;
+package fr.MrJeje_.ManyMOTD;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,11 +8,11 @@ import org.bukkit.entity.Player;
 
 public class LesCommandes implements CommandExecutor {
 	
-	private CustomMOTD pl;
+	private ManyMOTD pl;
 	private FileConfiguration config;
 	
-	public LesCommandes(CustomMOTD CustomMOTD) {
-		this.pl = CustomMOTD;
+	public LesCommandes(ManyMOTD ManyMOTD) {
+		this.pl = ManyMOTD;
 		this.config = pl.getConfig();
 		}	
 	
@@ -23,12 +23,12 @@ public class LesCommandes implements CommandExecutor {
 			
 			Player p = (Player)sender;
 			 
-			if(cmd.getName().equalsIgnoreCase("CustomMOTD")){
+			if(cmd.getName().equalsIgnoreCase("ManyMOTD")){
 				
 				if(args.length == 0){
 					
 					//is player
-					if ( !p.hasPermission("CustomMOTD.Staff"))
+					if ( !p.hasPermission("ManyMOTD.Staff"))
 					{
 						String message = config.getString("Message.IsPlayer").replace("&", "§");
 						String[] messageSplit = message.split("\n");
@@ -36,7 +36,7 @@ public class LesCommandes implements CommandExecutor {
 					}
 					
 					//is staff or op
-					if (p.hasPermission("CustomMOTD.Staff"))
+					if (p.hasPermission("ManyMOTD.Staff"))
 					{
 						String message = config.getString("Message.IsStaff").replace("&", "§");
 						String[] messageSplit = message.split("\n");
@@ -46,7 +46,7 @@ public class LesCommandes implements CommandExecutor {
 				}
 				
 				if(args.length > 0){
-						p.sendMessage("CustomMOTD developed by §4§lMrJeje_");
+						p.sendMessage("ManyMOTD developed by §4§lMrJeje_");
 				}
 			}
 		}

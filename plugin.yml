@@ -1,8 +1,8 @@
-name: CustomMOTD
+name: ManyMOTD
 version: 1.0
 author: MrJeje_
-main: fr.MrJeje_.CustomMOTD.CustomMOTD
+main: fr.MrJeje_.ManyMOTD.ManyMOTD
 commands:
- CustomMOTD: 
-  description: Show all CustomMOTD commands
-  aliases: [cmotd]
+ ManyMOTD: 
+  description: Show all ManyMOTD commands
+  aliases: [mmotd]

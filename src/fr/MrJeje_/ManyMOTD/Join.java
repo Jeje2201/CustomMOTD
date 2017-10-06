@@ -1,4 +1,4 @@
-package fr.MrJeje_.CustomMOTD;
+package fr.MrJeje_.ManyMOTD;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -8,11 +8,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class Join implements Listener {
 
-	private CustomMOTD pl;
+	private ManyMOTD pl;
 	private FileConfiguration config;
 
-	public Join(CustomMOTD CustomMOTD) {
-		this.pl = CustomMOTD;
+	public Join(ManyMOTD ManyMOTD) {
+		this.pl = ManyMOTD;
 		this.config = pl.getConfig();
 		}	
 	
