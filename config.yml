@@ -1,5 +1,5 @@
 Enable: true
- 
+
 Message:
- IsPlayer: "--\nThis &dis \n&aAn &6Exemple \nof &5a &8custom \n&cMOTD &afor &4PLAYER!\n--"
- IsStaff: "--\nThis &dis \n&aAn &6Exemple \nof &5a &8custom \n&cMOTD &afor &4Staff!\n--"
+  IsPlayer: "-------\n[&aMessage of the Day&f]\n* &6New spawn!\n* &6New minigame!\n* &cNo more double jump!\n~ Have a great day on our server ~\n-------"
+  IsStaff: "-------\n[&4STAFF To-Do List&f]\n* &6Update\n- PlayerTag plugin\n* &cRemove\n- CreativeWorld\n- AmusementParkWorld\n* &aAdd\n- AntiCheat Plugin\n-------"
